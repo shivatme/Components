@@ -8,10 +8,14 @@ const styles = StyleSheet.create({
   container: {
     width: SIZE,
     height: SIZE,
+    padding: MARGIN * 2,
   },
   web: {
-    borderRadius: MARGIN,
-    margin: MARGIN * 2,
+    flex: 1,
+    borderRadius: MARGIN * 2,
+    backgroundColor: '#f0f4f5',
+    borderWidth: 1,
+    borderColor: 'black',
   },
 });
 interface TileProps {
@@ -23,7 +27,8 @@ interface TileProps {
 const Tile = ({uri}: TileProps) => {
   return (
     <View style={styles.container} pointerEvents="none">
-      <WebView source={{uri}} containerStyle={styles.web} />
+      {/* <WebView source={{uri}} containerStyle={styles.web} /> */}
+      <View style={styles.web} />
     </View>
   );
 };

@@ -23,7 +23,6 @@ import {
   PanGestureHandler,
   PanGestureHandlerGestureEvent,
 } from 'react-native-gesture-handler';
-import {GestureDetector, Gesture} from 'react-native-gesture-handler';
 
 interface ItemProps {
   children: ReactNode;
@@ -58,7 +57,6 @@ function Item({
       translateY.value = withTiming(newPosition.y, animationConfig);
     },
   );
-  const pan = Gesture.Pan();
 
   const onGestureEvent = useAnimatedGestureHandler<
     PanGestureHandlerGestureEvent,
@@ -72,19 +70,28 @@ function Item({
     onActive: ({translationX, translationY}, ctx) => {
       translateX.value = ctx.x + translationX;
       translateY.value = ctx.y + translationY;
+
       const oldOrder = positions.value[id];
       const newOrder = getOrder(translateX.value, translateY.value);
       if (oldOrder !== newOrder) {
-        const idToSwap = Object.keys(positions.value).find(
-          key => positions.value[key] === newOrder,
-        );
-        if (idToSwap) {
-          const newPositions = JSON.parse(JSON.stringify(positions.value));
+        const newPositions = JSON.parse(JSON.stringify(positions.value));
+
+        console.log(newPositions[id]);
+        for (const key in newPositions) {
+          if (newOrder > oldOrder)
+            if (newPositions[key] <= newOrder && newPositions[key] > oldOrder) {
+              newPositions[key]--;
+            }
+          if (newOrder < oldOrder) {
+            if (newPositions[key] >= newOrder && newPositions[key] < oldOrder) {
+              newPositions[key]++;
+            }
+          }
           newPositions[id] = newOrder;
-          newPositions[idToSwap] = oldOrder;
           positions.value = newPositions;
         }
       }
+
       const lowerBound = scrollY.value;
       const upperBound = lowerBound + containerHeight - SIZE;
       const maxScroll = contentHeight - containerHeight;
@@ -112,6 +119,9 @@ function Item({
       });
       translateY.value = withTiming(destination.y, animationConfig);
     },
+    onFinish: () => {
+      isGestureActive.value = false;
+    },
   });
 
   const style = useAnimatedStyle(() => {
@@ -133,7 +143,9 @@ function Item({
   });
   return (
     <Animated.View style={style}>
-      <PanGestureHandler onGestureEvent={onGestureEvent}>
+      <PanGestureHandler
+        onGestureEvent={onGestureEvent}
+        activateAfterLongPress={150}>
         <Animated.View style={StyleSheet.absoluteFill}>
           {children}
         </Animated.View>

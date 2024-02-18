@@ -1,5 +1,5 @@
 import React, {ReactElement} from 'react';
-import {View, StyleSheet, ScrollView} from 'react-native';
+import {StyleSheet} from 'react-native';
 import {COL, Positions, SIZE} from './Config';
 import Item from './Item';
 import Animated, {

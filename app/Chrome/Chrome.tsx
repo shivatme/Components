@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, SafeAreaView, FlatList} from 'react-native';
+import {StyleSheet, SafeAreaView} from 'react-native';
 import Tile from './Tile';
 import SortableList from './SortableList';
 import {MARGIN} from './Config';
@@ -15,8 +15,8 @@ const tiles = [
     uri: 'https://expo.io',
   },
   {
-    id: 'facebook',
-    uri: 'https://facebook.com',
+    id: 'instagram',
+    uri: 'https://instagram.com/',
   },
   {
     id: 'reanimated',
@@ -31,32 +31,64 @@ const tiles = [
     uri: 'https://reactnavigation.org/',
   },
   {
-    id: 'youstube',
+    id: 'youtube',
     uri: 'https://youtube.com',
   },
   {
-    id: 'twiaatter',
+    id: 'twitter',
     uri: 'https://twitter.com',
   },
   {
-    id: 'twifftter',
-    uri: 'https://twitter.com',
+    id: 'linkedin',
+    uri: 'https://www.linkedin.com',
   },
   {
-    id: 'twitadter',
-    uri: 'https://twitter.com',
+    id: 'wikipedia',
+    uri: 'https://www.wikipedia.org',
   },
   {
-    id: 'twitfter',
-    uri: 'https://twitter.com',
+    id: 'amazon',
+    uri: 'https://www.amazon.com',
   },
   {
-    id: 'twistter',
-    uri: 'https://twitter.com',
+    id: 'ebay',
+    uri: 'https://www.ebay.com',
   },
   {
-    id: 'twitte25r',
-    uri: 'https://twitter.com',
+    id: 'netflix',
+    uri: 'https://www.netflix.com',
+  },
+  {
+    id: 'apple',
+    uri: 'https://www.apple.com',
+  },
+  {
+    id: 'microsoft',
+    uri: 'https://www.microsoft.com',
+  },
+  {
+    id: 'yahoo',
+    uri: 'https://www.yahoo.com',
+  },
+  {
+    id: 'bing',
+    uri: 'https://www.bing.com',
+  },
+  {
+    id: 'stackoverflow',
+    uri: 'https://stackoverflow.com',
+  },
+  {
+    id: 'wordpress',
+    uri: 'https://wordpress.com',
+  },
+  {
+    id: 'imdb',
+    uri: 'https://www.imdb.com',
+  },
+  {
+    id: 'craigslist',
+    uri: 'https://www.craigslist.org',
   },
 ];
 
@@ -82,7 +114,6 @@ function Chrome(props: ChromeProps): JSX.Element {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black',
     paddingHorizontal: MARGIN,
   },
 });
