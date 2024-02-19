@@ -6,6 +6,7 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 import Chrome from './app/Chrome';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import ParallaxCarousel from './app/Parallax Carousel';
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -21,7 +22,8 @@ function App(): React.JSX.Element {
           barStyle={isDarkMode ? 'light-content' : 'dark-content'}
           backgroundColor={backgroundStyle.backgroundColor}
         />
-        <Chrome />
+        {/* <Chrome /> */}
+        <ParallaxCarousel />
       </GestureHandlerRootView>
     </SafeAreaProvider>
   );
